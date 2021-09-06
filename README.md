@@ -1,6 +1,6 @@
-# Flask React Project
+# Welcome to E-shop 
 
-This is the backend for the Flask React project.
+This is the backend for the E-shop.
 
 ## Getting started
 
