@@ -10,6 +10,9 @@ class Product(db.Model):
   image = db.Column(db.String, nullable=False)
   category = db.Column(db.String(99), nullable=False)
 
+  orders = db.relationship('Order_Product', back_populates="products")
+
+
 def to_dict(self):
     return {
       "id": self.id,

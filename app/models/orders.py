@@ -1,5 +1,5 @@
 from .db import db
-from .orders_products import order_product
+# from .orders_products import Order_Product
 from datetime import datetime
 
 
@@ -10,8 +10,7 @@ class Order(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   date = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
-  products = db.relationship('Product', secondary=order_product, lazy="subquery",
-            backref=db.backref('orders', lazy=True))
+  products = db.relationship('Order_Product', back_populates="orders")
 
   def to_dict(self):
     return {

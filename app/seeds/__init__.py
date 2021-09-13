@@ -14,7 +14,7 @@ def seed():
     seed_users()
     seed_products()
     seed_orders()
-    seed_orders_products
+    seed_orders_products()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
@@ -23,5 +23,5 @@ def undo():
     undo_users()
     undo_products()
     undo_orders()
-    undo_orders_products
+    undo_orders_products()
     # Add other undo functions here
