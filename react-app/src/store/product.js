@@ -30,7 +30,7 @@ export const fetchAllProducts = () => async (dispatch) => {
     const data = await res.json();
     console.log('All Products: ', data)
     // we want to dispatch the data we receive from the response (the backend)
-    // dispatch(getProducts(data))
+    dispatch(getProducts(data))
 }
 
 export const fetchOneProduct = (productId) => async (dispatch) => {
