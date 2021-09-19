@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from 'react-redux'
 
-import {fetchAllProducts} from '../store/product';
+import {fetchAllProducts, fetchOneProduct} from '../store/product';
 
 //TODO- test out the backend api routes.
 
@@ -11,7 +11,8 @@ const Test = () => {
 
     //invoke useDispatch in the useEffect hook and dispatch the thunk action with the correct data
     useEffect(() => {
-        dispatch(fetchAllProducts())
+        // dispatch(fetchAllProducts())
+        dispatch(fetchOneProduct(1))
     }, [dispatch])
 
     return (

@@ -28,7 +28,7 @@ export const fetchAllProducts = () => async (dispatch) => {
         }
     });
     const data = await res.json();
-    console.log('All Products: ', data)
+    // console.log('All Products: ', data)
     // we want to dispatch the data we receive from the response (the backend)
     dispatch(getProducts(data))
 }
@@ -43,19 +43,33 @@ export const fetchOneProduct = (productId) => async (dispatch) => {
     //json the response and store it in a variable
     const data = await res.json();
     //dispatch an action with the data
-    console.log('One Product: ', data);
-    // dispatch(getOneProduct(data))
+    // console.log('One Product: ', data);
+    dispatch(getOneProduct(data))
 }
 
 // Reducer
-//IMPORTANT- COME BACK TO FIXING THE GETPRODUCTS CASE
 export default function reducer(state={}, action) {
     //this will be your slice of state in the Redux store,
     //in your slice of state you can pass in whatever data structure you prefer.
     //generally we want to return an object with all the correct key:value pairs. So the key is the product_id and value is the product(object) itself
+    let newState;
     switch (action.type) {
         case GET_PRODUCTS:
-            return state
+            //rule of thumb is we want to grab a copy of the current slice of start.
+            newState = {...state}
+            action.data.products.forEach(product => {
+                newState[product.id] = product
+            })
+            return newState;
+            //If you set the slice of state to be an array. It is fine but if you need to find a specific product
+            //in the array, you will have to iterate through the entire array to find the product.
+            //But with grabbing a copy of the state and creating key:value pairs, you now have easy access to
+            //find any specific product in constant time.
+            //  return action.data.products
+        case GET_ONE_PRODUCT:
+            newState = {...state}
+            newState[action.data.id] = action.data
+            return newState;
         default:
             return state
     }
