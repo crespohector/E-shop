@@ -9,9 +9,9 @@ def orders(userId):
     GET all orders by user Id
     '''
     orders = Order.query.filter(Order.user_id == userId).all()
-    return {'orders': [order.to_dict for order in orders]}
+    return {'orders': [order.to_dict() for order in orders]}
 
-@order_routes.route('/<orderId>')
+@order_routes.route('/<orderId>/')
 def order_by_id(orderId):
     '''
     GET a specific order

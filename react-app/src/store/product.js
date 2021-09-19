@@ -29,7 +29,6 @@ export const fetchAllProducts = () => async (dispatch) => {
     });
     const data = await res.json();
     // console.log('All Products: ', data)
-    // we want to dispatch the data we receive from the response (the backend)
     dispatch(getProducts(data))
 }
 
@@ -40,9 +39,7 @@ export const fetchOneProduct = (productId) => async (dispatch) => {
             'Content-Type': 'application/json',
         }
     })
-    //json the response and store it in a variable
     const data = await res.json();
-    //dispatch an action with the data
     // console.log('One Product: ', data);
     dispatch(getOneProduct(data))
 }
