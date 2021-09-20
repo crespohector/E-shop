@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from 'react-redux'
 
 // import {fetchAllProducts, fetchOneProduct} from '../store/product';
-import {fetchAllOrders, fetchOneOrder} from '../store/order';
+import {fetchAllOrders, fetchOneOrder, createOrder} from '../store/order';
 
 
 const Test = () => {
@@ -14,6 +14,7 @@ const Test = () => {
         // dispatch(fetchOneProduct(1))
         // dispatch(fetchAllOrders(1))
         // dispatch(fetchOneOrder(1))
+        // dispatch(createOrder(1))
     }, [dispatch])
 
     return (

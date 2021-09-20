@@ -20,7 +20,7 @@ def order_by_id(orderId):
     return order.to_dict()
 
 
-@order_routes.route('/user/<userId>', methods=['POST'])
+@order_routes.route('/user/<userId>/', methods=['POST'])
 def create_order(userId):
     '''
     POST create a order with userid
