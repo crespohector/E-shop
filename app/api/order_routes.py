@@ -23,11 +23,27 @@ def order_by_id(orderId):
 @order_routes.route('/user/<userId>/', methods=['POST'])
 def create_order(userId):
     '''
-    POST create a order with userid
+    POST create an order with userid
     '''
-    order = Order(
-        user_id=userId
-    )
-    db.session.add(order)
-    db.session.commit()
-    return order.to_dict()
+    #create an Order
+    #db.session.add the order to the db
+    #IDK if order will be immidiatly updated after add if not just commit it
+    #then, i will find the order by its primary key
+    #iterate to create and db.session.add the order_product
+    #update it to the db
+    #make sure to return the created order with order_product
+    #to to the front end
+
+    #figure out how to get the orderProducts array from the backend side
+
+    data = request.data
+    print('DATA: ', data)
+
+    # order = Order(
+    #     user_id=userId
+    # )
+
+    # db.session.add(order)
+    # db.session.commit()
+    # return order.to_dict()
+    return {"order": 'orders'}
