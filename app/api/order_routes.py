@@ -14,9 +14,13 @@ def orders(userId):
 @order_routes.route('/<orderId>/')
 def order_by_id(orderId):
     '''
-    GET a specific order
+    GET a specific Order with the products associated with the Order
     '''
+    #todo- might have to fetch the products associated with the order and send it to the front
     order = Order.query.get(orderId)
+    #query through the joins table of order_products and filter out only all the records where orderId is whatever
+    order_products = Order_Product.query.filter(Order_Product.order_id == orderId).all()
+    print('ALL ORDER PRODUCTS: ', order_products)
     return order.to_dict()
 
 
