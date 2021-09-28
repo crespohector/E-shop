@@ -37,17 +37,17 @@ export const fetchOneOrder = (orderId) => async (dispatch) => {
 
 //create a thunk action to create an order
 export const createOrder = (orderProducts) => async (dispatch) => {
-    const {userId, productsId} = orderProducts;
+    const {userId, products} = orderProducts;
     const res = await fetch(`/api/orders/user/${userId}/`, {
         method: 'POST',
         headers: {
             'Content-Type': "application/json"
         },
-        body: JSON.stringify({productsId})
+        body: JSON.stringify({products: products})
     })
     const data = await res.json();
-    console.log('new order: ', data);
-    // dispatch(getOneOrder(data))
+    // console.log('new order: ', data);
+    dispatch(getOneOrder(data))
 }
 
 //Reducer

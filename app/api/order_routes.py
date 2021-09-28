@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Order, db
+from app.models import Order, Order_Product, db
 
 order_routes = Blueprint('orders', __name__)
 
@@ -25,25 +25,24 @@ def create_order(userId):
     '''
     POST create an order with userid
     '''
-    #create an Order
-    #db.session.add the order to the db
-    #IDK if order will be immidiatly updated after add if not just commit it
-    #then, i will find the order by its primary key
-    #iterate to create and db.session.add the order_product
-    #update it to the db
-    #make sure to return the created order with order_product
-    #to to the front end
+# 1.) query the Order table
+# 2.) use the order_by method to query through the Order model in desc order
+# 3.) grab the first record by using the first method
+    # new_order = Order.query.order_by(Order.id.desc()).first()
+    data = request.json
+    products = data['products']
+    order = Order(
+        user_id=userId
+    )
+    db.session.add(order)
+    # make sure to update the db to have the new order
+    db.session.commit()
+    new_order = order.to_dict()
 
-    #figure out how to get the orderProducts array from the backend side
+    for product in products:
+        new_order_product = Order_Product(order_id=new_order['id'],product_id=product["productId"],quantity=product["quantity"])
+        db.session.add(new_order_product)
 
-    data = request.data
-    print('DATA: ', data)
-
-    # order = Order(
-    #     user_id=userId
-    # )
-
-    # db.session.add(order)
-    # db.session.commit()
-    # return order.to_dict()
-    return {"order": 'orders'}
+    db.session.commit()
+    #what should we respond to the cliend side
+    return order.to_dict()

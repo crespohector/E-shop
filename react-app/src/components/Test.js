@@ -5,7 +5,7 @@ import {fetchAllOrders, fetchOneOrder, createOrder} from '../store/order';
 
 const Test = () => {
     const dispatch = useDispatch();
-    let orderProducts = {userId: 1, productsId: [1,2,3]}
+    let orderProducts = {userId: 1, products: [{productId: 1, quantity: 2}, {productId: 2, quantity: 1}, {productId: 3, quantity: 4}]}
 
     //invoke useDispatch in the useEffect hook and dispatch the thunk action with the correct data
     useEffect(() => {
@@ -13,7 +13,7 @@ const Test = () => {
         // dispatch(fetchOneProduct(1))
         // dispatch(fetchAllOrders(1))
         // dispatch(fetchOneOrder(1))
-        dispatch(createOrder(orderProducts))
+        // dispatch(createOrder(orderProducts))
     }, [dispatch])
 
     return (
