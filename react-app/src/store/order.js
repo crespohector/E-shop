@@ -31,8 +31,8 @@ export const fetchOneOrder = (orderId) => async (dispatch) => {
         }
     })
     const data = await res.json();
-    // console.log('Specific order: ', data)
-    dispatch(getOneOrder(data))
+    console.log('Specific order: ', data)
+    // dispatch(getOneOrder(data))
 }
 
 //create a thunk action to create an order

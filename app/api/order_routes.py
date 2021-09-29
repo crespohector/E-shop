@@ -20,8 +20,7 @@ def order_by_id(orderId):
     order = Order.query.get(orderId)
     #query through the joins table of order_products and filter out only all the records where orderId is whatever
     order_products = Order_Product.query.filter(Order_Product.order_id == orderId).all()
-    print('ALL ORDER PRODUCTS: ', order_products)
-    return order.to_dict()
+    return {'order': order.to_dict(), 'products': [order_product.to_dict() for order_product in order_products]}
 
 
 @order_routes.route('/user/<userId>/', methods=['POST'])
