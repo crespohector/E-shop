@@ -16,7 +16,6 @@ def order_by_id(orderId):
     '''
     GET a specific Order with the products associated with the Order
     '''
-    #todo- might have to fetch the products associated with the order and send it to the front
     order = Order.query.get(orderId)
     #query through the joins table of order_products and filter out only all the records where orderId is whatever
     order_products = Order_Product.query.filter(Order_Product.order_id == orderId).all()
@@ -48,4 +47,4 @@ def create_order(userId):
 
     db.session.commit()
     #what should we respond to the cliend side
-    return order.to_dict()
+    return {'order': order.to_dict()}

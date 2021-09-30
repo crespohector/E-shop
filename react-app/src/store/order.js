@@ -20,7 +20,7 @@ export const fetchAllOrders = (userId) => async (dispatch) => {
         }
     })
     const data = await res.json();
-    // console.log('all orders from user: ', data);
+    console.log('all orders from user: ', data);
     dispatch(getOrders(data))
 }
 
@@ -32,7 +32,7 @@ export const fetchOneOrder = (orderId) => async (dispatch) => {
     })
     const data = await res.json();
     console.log('Specific order: ', data)
-    // dispatch(getOneOrder(data))
+    dispatch(getOneOrder(data))
 }
 
 //create a thunk action to create an order
@@ -46,7 +46,7 @@ export const createOrder = (orderProducts) => async (dispatch) => {
         body: JSON.stringify({products: products})
     })
     const data = await res.json();
-    // console.log('new order: ', data);
+    console.log('new order: ', data);
     dispatch(getOneOrder(data))
 }
 
@@ -63,7 +63,7 @@ export default function reducer(state={}, action) {
 
         case GET_ONE_ORDER:
             newState = {...state}
-            newState[action.data.id] = action.data;
+            newState[action.data.order.id] = action.data;
             return newState;
 
         default:

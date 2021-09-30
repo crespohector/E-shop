@@ -11,7 +11,7 @@ const Test = () => {
     useEffect(() => {
         // dispatch(fetchAllProducts())
         // dispatch(fetchOneProduct(1))
-        // dispatch(fetchAllOrders(1))
+        dispatch(fetchAllOrders(1))
         dispatch(fetchOneOrder(1))
         // dispatch(createOrder(orderProducts))
     }, [dispatch])
