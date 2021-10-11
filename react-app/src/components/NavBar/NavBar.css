@@ -1,0 +1,25 @@
+.main_wrapper {
+    border: 1px solid black;
+    /* width: 100vw; */
+}
+
+.first_wrapper {
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.wrapper-search {
+    border: 1px solid green;
+
+}
+
+.wrapper-logo_img {
+    border: 1px solid black;
+}
+
+.wrapper-user {
+    border: 1px solid green;
+    display: flex;
+    justify-content: flex-end;
+}
