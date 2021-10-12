@@ -12,27 +12,27 @@ const NavBar = () => {
       <div className="first_wrapper">
 
         <div className="wrapper-search">
-          <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
-          <i className="fas fa-search"></i>
+          <div className="search-container">
+            <input className="search-input" type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
+            <i className="fas fa-search"></i>
+          </div>
         </div>
 
         <img className="wrapper-logo_img" src={eShopImg} alt="EShopImage" />
 
         <div className="wrapper-user">
-          <div className="userBtn">
+          <div className="user-icons">
             <i className="far fa-user"></i>
-          </div>
-          <div className="userShopCart">
-            <i class="fas fa-shopping-cart"></i>
+            <i className="fas fa-shopping-cart"></i>
           </div>
         </div>
       </div>
 
       <div className="second_wrapper">
-        <button type="button">Women</button>
-        <button type="button">Men</button>
-        <button type="button">Jewelery</button>
-        <button type="button">Electronics</button>
+          <button type="button">Women</button>
+          <button type="button">Men</button>
+          <button type="button">Jewelery</button>
+          <button type="button">Electronics</button>
       </div>
       {/* <ul>
         <li>
