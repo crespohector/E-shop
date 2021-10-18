@@ -9,31 +9,30 @@ const NavBar = () => {
 
   return (
     <nav className="main_wrapper">
-      <div className="wrapper">
+      <div className="first_wrapper">
 
         <div className="wrapper-search">
-          <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
-          <i className="fas fa-search"></i>
+          <div className="search-container">
+            <input className="search-input" type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
+            <i className="fas fa-search"></i>
+          </div>
         </div>
 
-        <img src={eShopImg} alt="EShopImage" />
+        <img className="wrapper-logo_img" src={eShopImg} alt="EShopImage" />
 
         <div className="wrapper-user">
-          <div className="userBtn">
+          <div className="user-icons">
             <i className="far fa-user"></i>
-          </div>
-          <div className="userShopCart">
-            <i class="fas fa-shopping-cart"></i>
+            <NavLink className="cart_link" to="/cart" exact={true}><i className="fas fa-shopping-cart"></i></NavLink>
           </div>
         </div>
-
       </div>
 
-      <div className="wrapper">
-        <button type="button">Women</button>
-        <button type="button">Men</button>
-        <button type="button">Toys</button>
-        <button type="button">Technology</button>
+      <div className="second_wrapper">
+          <NavLink className="department_links" to="/women" exact={true}>Women</NavLink>
+          <NavLink className="department_links" to="/men">Men</NavLink>
+          <NavLink className="department_links" to="/jewelery">Jewelery</NavLink>
+          <NavLink className="department_links" to="/electronics">Electronics</NavLink>
       </div>
       {/* <ul>
         <li>
