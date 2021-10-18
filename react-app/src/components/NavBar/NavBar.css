@@ -48,17 +48,31 @@
 }
 
 .fa-user {
-    margin: 0px 10px 0px 0px;
-    font-size: 20px;
+    margin: 0px 15px 0px 0px;
+    font-size: 1.2em;
     cursor: pointer;
     color: #ffffff;
+    text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+    transition: text-decoration-color 300ms, color 300ms;
+}
+
+.fa-user:hover {
+    text-decoration-color: rgb(255, 255, 255);
+    color: rgb(209, 202, 202);
 }
 
 .fa-shopping-cart {
     margin: 0px 10px 0px 0px;
-    font-size: 20px;
+    font-size: 1.2em;
     cursor: pointer;
     color: #ffffff;
+    text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+    transition: text-decoration-color 300ms, color 300ms;
+}
+
+.fa-shopping-cart:hover {
+    text-decoration-color: rgb(255, 255, 255);
+    color: rgb(209, 202, 202);
 }
 
 .second_wrapper {
@@ -68,17 +82,18 @@
     background-color: whitesmoke;
 }
 
-.second_wrapper button {
+.department_links {
     margin: 15px 5px;
-    font-size: 16px;
+    font-size: 1.2em;
     font-weight: 600;
     border: none;
     text-decoration: underline 0.15em rgba(0, 0, 0, 0);
     transition: text-decoration-color 300ms;
     background-color: transparent;
+    color: black;
 }
 
-.second_wrapper button:hover {
+.department_links:hover {
     text-decoration-color: rgba(0, 0, 0, 1);
     cursor: pointer;
 }

@@ -23,16 +23,16 @@ const NavBar = () => {
         <div className="wrapper-user">
           <div className="user-icons">
             <i className="far fa-user"></i>
-            <i className="fas fa-shopping-cart"></i>
+            <NavLink className="cart_link" to="/cart" exact={true}><i className="fas fa-shopping-cart"></i></NavLink>
           </div>
         </div>
       </div>
 
       <div className="second_wrapper">
-          <button type="button">Women</button>
-          <button type="button">Men</button>
-          <button type="button">Jewelery</button>
-          <button type="button">Electronics</button>
+          <NavLink className="department_links" to="/women" exact={true}>Women</NavLink>
+          <NavLink className="department_links" to="/men">Men</NavLink>
+          <NavLink className="department_links" to="/jewelery">Jewelery</NavLink>
+          <NavLink className="department_links" to="/electronics">Electronics</NavLink>
       </div>
       {/* <ul>
         <li>
