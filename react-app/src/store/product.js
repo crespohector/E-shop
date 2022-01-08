@@ -21,6 +21,9 @@ const getOneProduct = (data) => ({
 //The purpose of a thunk action is to fetch data from our db and then update the redux store by dispatching the action.
 // We want to use ES6 syntax to export functions
 
+//notice how the inner function has async await already. So there is no need to have async await
+//in the useEffect when dispatching this thunk action
+
 export const fetchAllProducts = () => async (dispatch) => {
     const res = await fetch('/api/products/', {
         headers: {

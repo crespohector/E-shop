@@ -36,7 +36,7 @@ function App() {
         {/* <Route path="/test">
           <Test/>
         </Route> */}
-        <Route path="/" exact={true} >
+        <Route path="/" exact={true}>
           <Splash />
         </Route>
         <Route path="/login" exact={true}>
