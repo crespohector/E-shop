@@ -1,0 +1,33 @@
+
+
+/* product of the day component */
+
+.feature-product {
+    width: 95%;
+    height: 50%;
+    margin: 0px auto;
+    text-align: center;
+    background-color: white;
+}
+
+.feature-product__span {
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 24px 0px 10px 0px;
+}
+
+.feature-product__span-title {
+    display: block;
+    margin: 10px 0px;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.feature-product__img {
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 15px;
+    width: 10%;
+    height: 5%;
+}

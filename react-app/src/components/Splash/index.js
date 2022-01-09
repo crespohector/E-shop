@@ -16,7 +16,7 @@ const Splash = () => {
     useEffect(async () => {
         let data = await dispatch(fetchAllProducts());
         setFeatureItem(() => data[Math.floor(Math.random() * 19)])
-        
+
         const intervalId = setInterval(() => {
             setFeatureItem(() => data[Math.floor(Math.random() * 19)]);
         }, 8000)
@@ -26,7 +26,6 @@ const Splash = () => {
 
     return (
         <div>
-            <h1>Hello world!</h1>
             <Productoftheday item={featureItem} />
         </div>
     )
