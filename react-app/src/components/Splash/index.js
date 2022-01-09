@@ -6,31 +6,28 @@ import Productoftheday from "./productOfTheDay";
 import "./Splash.css"
 
 const Splash = () => {
-    //have to call react hooks in the function component or custom react hook
     const dispatch = useDispatch();
     const stateProducts = useSelector((state) => state.products)
     const productsArr = Object.values(stateProducts);
-    const [featureProduct, setFeatureProduct] = useState("");
-    console.log('products: ', productsArr)
-    // console.log('feature: ', featureProduct)
-    
+    const [featureItem, setFeatureItem] = useState("");
+    // console.log('products: ', products)
+    // console.log('feature: ', featureItem)
 
-    useEffect(() => {
-        dispatch(fetchAllProducts());
+    useEffect(async () => {
+        let data = await dispatch(fetchAllProducts());
+        setFeatureItem(() => data[Math.floor(Math.random() * 19)])
+        
+        const intervalId = setInterval(() => {
+            setFeatureItem(() => data[Math.floor(Math.random() * 19)]);
+        }, 8000)
 
-        // const intervalId = setInterval(() => {
-        //     console.log('here: ', productsArr)
-        //     setFeatureProduct(() => productsArr[Math.floor(Math.random() * 19)]);
-        // }, 3000)
-
-
-        // return () => clearInterval(intervalId);
+        return () => clearInterval(intervalId);
     }, [dispatch])
 
     return (
         <div>
             <h1>Hello world!</h1>
-            <Productoftheday />
+            <Productoftheday item={featureItem} />
         </div>
     )
 }

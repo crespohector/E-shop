@@ -33,6 +33,8 @@ export const fetchAllProducts = () => async (dispatch) => {
     const data = await res.json();
     // console.log('All Products: ', data)
     dispatch(getProducts(data))
+    const products = Object.values(data.products);
+    return products;
 }
 
 export const fetchOneProduct = (productId) => async (dispatch) => {
