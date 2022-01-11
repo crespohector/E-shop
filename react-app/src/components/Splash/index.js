@@ -30,9 +30,11 @@ const Splash = () => {
             </div>
             <div className="category">
                 <span className="category__span">Women's Clothing</span>
-                {productsArr.filter(product => product.category === "women's clothing").map(product => (
-                    <Product key={product.id} item={product} />
-                ))}
+                <div className="category__div-products">
+                    {productsArr.filter(product => product.category === "women's clothing").map(product => (
+                        <Product key={product.id} item={product} />
+                    ))}
+                </div>
             </div>
 
         </div>

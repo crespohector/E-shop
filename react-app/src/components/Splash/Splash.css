@@ -4,7 +4,7 @@
 /* product of the day component */
 .feature-product {
     width: 95%;
-    height: 50%;
+    max-height: 500px;
     margin: 0px auto;
     text-align: center;
     background-color: white;
@@ -17,7 +17,46 @@
     padding: 24px 0px 10px 0px;
 }
 
+
+/*category component*/
+.category {
+    border: 1px solid black;
+    width: 90%;
+    max-height: 300px;
+    margin: 20px auto;
+    overflow: auto;
+    white-space: nowrap;
+    overflow-wrap: break-word;
+}
+
+
+
+.category__span {
+    display: block;
+    font-size: 1.5rem;
+    padding: 10px 0px 10px 10px;
+    font-weight: 400;
+    border: 1px solid red;
+}
+
+.category__div-products {
+    border: 1px solid blue;
+    display: inline-block;
+    /* width: 100%; */
+}
+
+
 /* product component */
+.product {
+    border: 1px solid green;
+    text-align: center;
+    padding: 0px 10px;
+    /* max-width: 400px; */
+    /* max-height: 200px; */
+    margin: 0px auto;
+    display: inline-block;
+}
+
 .product__span-title {
     display: block;
     padding: 10px 0px;
@@ -33,18 +72,3 @@
     max-height: 100px;
     cursor: pointer;
 }
-
-/*category component*/
-
-
-
-
-
-
-
-
-
-/*
-.category::-webkit-scrollbar{
-    width: 2px;
-} */
