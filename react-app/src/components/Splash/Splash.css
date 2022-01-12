@@ -23,10 +23,14 @@
     width: 90%;
     max-height: 300px;
     margin: 30px auto;
-    overflow-x: auto;
+    overflow-x: hidden;
     white-space: nowrap;
     overflow-wrap: break-word;
     background-color: white;
+}
+
+.category:hover {
+    overflow-x: auto;
 }
 
 #style-2::-webkit-scrollbar-track
@@ -38,7 +42,7 @@
 
 #style-2::-webkit-scrollbar
 {
-	height: 8px;
+	height: 10px;
 	background-color: #F5F5F5;
 }
 
@@ -52,9 +56,9 @@
 
 .category__span {
     display: block;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     padding: 15px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .category__div-products {
