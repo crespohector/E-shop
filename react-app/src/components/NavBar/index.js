@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import eShopImg from "../../images/eShopImg.png"
 import "./NavBar.css"
 
 const NavBar = () => {
+  const history = useHistory();
   const [search, setSearch] = useState('');
+
+  const redirectToHomePage = () => {
+    history.push('/')
+  }
+
+  console.log('search: ', search)
 
   return (
     <div className="main-container">
@@ -13,12 +20,15 @@ const NavBar = () => {
 
         <div className="user-navbar__div-search">
           <div className="search-container">
-            <input className="search-input" type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
+            <input className="search-input" type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
             <i className="fas fa-search"></i>
+            {search.length > 0 && <div className='search-filter-container'>
+
+            </div>}
           </div>
         </div>
 
-        <img className="logo_img" src={eShopImg} alt="EShopImage" />
+        <img onClick={redirectToHomePage} className="logo_img" src={eShopImg} alt="EShopImage" />
 
         <div className="user">
           <div className="user__icons">
@@ -29,10 +39,10 @@ const NavBar = () => {
       </nav>
 
       <div className="categories">
-          <NavLink className="categories__department-link" to="/women" exact={true}>Women</NavLink>
-          <NavLink className="categories__department-link" to="/men">Men</NavLink>
-          <NavLink className="categories__department-link" to="/jewelery">Jewelery</NavLink>
-          <NavLink className="categories__department-link" to="/electronics">Electronics</NavLink>
+        <NavLink className="categories__department-link" to="/women" exact={true}>Women</NavLink>
+        <NavLink className="categories__department-link" to="/men">Men</NavLink>
+        <NavLink className="categories__department-link" to="/jewelery">Jewelery</NavLink>
+        <NavLink className="categories__department-link" to="/electronics">Electronics</NavLink>
       </div>
       {/* <ul>
         <li>

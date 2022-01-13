@@ -11,9 +11,13 @@ const Splash = () => {
     const productsArr = Object.values(stateProducts);
     const [featureItem, setFeatureItem] = useState("");
 
-    useEffect(async () => {
-        let data = await dispatch(fetchAllProducts());
-        setFeatureItem(() => data[Math.floor(Math.random() * (data.length - 1))])
+    useEffect(() => {
+        let data;
+        async function fetchProduct() {
+            data = await dispatch(fetchAllProducts());
+            setFeatureItem(() => data[Math.floor(Math.random() * (data.length - 1))])
+        }
+        fetchProduct();
         const intervalId = setInterval(() => {
             setFeatureItem(() => data[Math.floor(Math.random() * (data.length - 1))]);
         }, 5000)

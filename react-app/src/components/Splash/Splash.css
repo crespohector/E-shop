@@ -42,7 +42,7 @@
 
 #style-2::-webkit-scrollbar
 {
-	height: 10px;
+	height: 11px;
 	background-color: #F5F5F5;
 }
 
@@ -91,4 +91,10 @@
     max-width: 200px;
     max-height: 100px;
     cursor: pointer;
+    transition: max-width 0.4s, max-height 0.4s;
+}
+
+.product__img:hover {
+    max-width: 210px;
+    max-height: 110px;
 }
