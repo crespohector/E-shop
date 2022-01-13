@@ -19,13 +19,11 @@ const NavBar = () => {
       <nav className="user-navbar">
 
         <div className="user-navbar__div-search">
-          <div className="search-container">
             <input className="search-input" type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
             <i className="fas fa-search"></i>
             {search.length > 0 && <div className='search-filter-container'>
 
             </div>}
-          </div>
         </div>
 
         <img onClick={redirectToHomePage} className="logo_img" src={eShopImg} alt="EShopImage" />
