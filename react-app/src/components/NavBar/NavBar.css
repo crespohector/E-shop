@@ -40,11 +40,11 @@
 
 .search-filter-container {
     width: 90%;
-    height: 100%;
+    min-height: 200px;
     position: absolute;
-    top: 25px;
-    border: 1px solid white;
-    background-color: rgb(121, 112, 112);
+    top: 28px;
+    left: 6px;
+    background-color: rgb(167, 155, 155);
 }
 
 .logo_img {
