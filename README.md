@@ -1,7 +1,5 @@
 # Welcome to E-shop 
 
-This is the backend for the E-shop.
-
 ## Getting started
 
 1. Install dependencies
