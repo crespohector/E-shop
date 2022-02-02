@@ -2,7 +2,7 @@ from .db import db
 
 class Product(db.Model):
   __tablename__ = 'products'
-
+  #change price data type to Numeric in order to have decimals.
   id = db.Column(db.Integer, primary_key = True)
   title = db.Column(db.String(150), nullable = False)
   price = db.Column(db.Integer, nullable=False)
