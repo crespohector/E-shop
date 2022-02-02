@@ -24,15 +24,6 @@ export const fetchAllOrders = (userId) => async (dispatch) => {
     dispatch(getOrders(data))
 }
 
-/* Experimental purposes. Notice, we are not declaring the inner function
-   to be asynchronous.
-export function fetchOneOrder (id) {
-    return function (dispatch) {
-        return 'hello world';
-    }
-}
-*/
-
 export const fetchOneOrder = (orderId) => async (dispatch) => {
     const res = await fetch(`/api/orders/${orderId}/`, {
         headers: {
@@ -43,7 +34,6 @@ export const fetchOneOrder = (orderId) => async (dispatch) => {
     dispatch(getOneOrder(data))
 }
 
-//create a thunk action to create an order
 export const createOrder = (orderProducts) => async (dispatch) => {
     const {userId, products} = orderProducts;
     const res = await fetch(`/api/orders/user/${userId}/`, {

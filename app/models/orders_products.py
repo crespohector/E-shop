@@ -1,8 +1,5 @@
 from .db import db
 
-#"The association object pattern is a variant on many-to-many:
-# it’s used when your association table contains additional columns beyond those which are foreign keys to the left and right tables."
-
 class Order_Product(db.Model):
     __tablename__ = 'orders_products'
 

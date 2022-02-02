@@ -10,8 +10,6 @@ import User from "./components/User";
 import Splash from "./components/Splash";
 import { authenticate } from "./store/session";
 
-//test route component
-import Test from './components/Test';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -33,9 +31,6 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        {/* <Route path="/test">
-          <Test/>
-        </Route> */}
         <Route path="/" exact={true}>
           <Splash />
         </Route>
