@@ -20,7 +20,7 @@
     max-width: 200px;
     max-height: 100px;
     cursor: pointer;
-    transition: max-width 0.4s, max-height 0.4s;
+    transition: max-width 0.2s, max-height 0.2s;
 }
 
 .product__img:hover {

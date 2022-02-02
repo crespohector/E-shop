@@ -1,5 +1,30 @@
 /*Remember to implement DRY css code*/
 
+/*Categories in Navbar */
+.categories {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgb(226, 225, 225);
+    background-color: whitesmoke;
+}
+
+.categories__department-link {
+    margin: 15px 5px;
+    padding: 0px 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border: none;
+    text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+    transition: text-decoration-color 300ms;
+    background-color: transparent;
+    color: black;
+}
+
+.categories__department-link:hover {
+    text-decoration-color: rgba(0, 0, 0, 1);
+    cursor: pointer;
+}
+
 /* product of the day component */
 .feature-product {
     width: 95%;
