@@ -1,6 +1,5 @@
 /*Remember to implement DRY css code*/
 
-
 /* product of the day component */
 .feature-product {
     width: 95%;
@@ -60,40 +59,6 @@
 .category__div-products {
     display: inline-block;
 }
-
-
-/* product component */
-.product {
-    text-align: center;
-    padding: 0px 10px;
-    /* max-width: 400px; */
-    /* max-height: 200px; */
-    margin: 0px auto;
-    display: inline-block;
-}
-
-.product__span-title {
-    display: block;
-    padding: 10px 0px;
-    font-size: 1.3rem;
-    font-weight: 400;
-}
-
-.product__img {
-    display: block;
-    margin: 0 auto;
-    padding: 15px 0px;
-    max-width: 200px;
-    max-height: 100px;
-    cursor: pointer;
-    transition: max-width 0.4s, max-height 0.4s;
-}
-
-.product__img:hover {
-    max-width: 210px;
-    max-height: 110px;
-}
-
 
 @media screen and (min-width: 1025px) {
     .category {
