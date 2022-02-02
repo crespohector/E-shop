@@ -1,0 +1,118 @@
+/*Remember to implement DRY css code*/
+
+
+/* product of the day component */
+.feature-product {
+    width: 95%;
+    max-height: 500px;
+    margin: 0px auto;
+    text-align: center;
+    background-color: white;
+}
+
+.feature-product__span {
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 24px 0px 10px 0px;
+}
+
+
+/*category component*/
+.category {
+    width: 90%;
+    max-height: 300px;
+    margin: 30px auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-wrap: break-word;
+    background-color: white;
+}
+
+#style-2::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar
+{
+	height: 5px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: rgb(104, 98, 98);
+}
+
+
+.category__span {
+    display: block;
+    font-size: 1.5rem;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.category__div-products {
+    display: inline-block;
+}
+
+
+/* product component */
+.product {
+    text-align: center;
+    padding: 0px 10px;
+    /* max-width: 400px; */
+    /* max-height: 200px; */
+    margin: 0px auto;
+    display: inline-block;
+}
+
+.product__span-title {
+    display: block;
+    padding: 10px 0px;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.product__img {
+    display: block;
+    margin: 0 auto;
+    padding: 15px 0px;
+    max-width: 200px;
+    max-height: 100px;
+    cursor: pointer;
+    transition: max-width 0.4s, max-height 0.4s;
+}
+
+.product__img:hover {
+    max-width: 210px;
+    max-height: 110px;
+}
+
+
+@media screen and (min-width: 1025px) {
+    .category {
+        width: 90%;
+        max-height: 300px;
+        margin: 30px auto;
+        overflow-x: hidden;
+        white-space: nowrap;
+        overflow-wrap: break-word;
+        background-color: white;
+    }
+
+    .category:hover {
+        overflow-x: auto;
+    }
+
+    #style-2::-webkit-scrollbar {
+	height: 11px;
+	background-color: #F5F5F5;
+    }
+
+  }

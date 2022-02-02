@@ -36,7 +36,7 @@ function App() {
         {/* <Route path="/test">
           <Test/>
         </Route> */}
-        <Route path="/" exact={true} >
+        <Route path="/" exact={true}>
           <Splash />
         </Route>
         <Route path="/login" exact={true}>
@@ -51,6 +51,12 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true} >
           <User />
         </ProtectedRoute>
+        <Route path="/products/category" exact={true}>
+          <h1>product category page</h1>
+        </Route>
+        <Route path="/products/category/:productId" exact={true}>
+          <h2>product category with product id</h2>
+        </Route>
       </Switch >
       {/* footer */}
     </BrowserRouter >
