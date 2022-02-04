@@ -1,5 +1,29 @@
 /*Remember to implement DRY css code*/
 
+/*Categories in Navbar */
+.categories {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgb(226, 225, 225);
+    background-color: whitesmoke;
+}
+
+.categories__department-link {
+    margin: 15px 5px;
+    padding: 0px 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border: none;
+    text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+    transition: text-decoration-color 300ms;
+    background-color: transparent;
+    color: black;
+}
+
+.categories__department-link:hover {
+    text-decoration-color: rgba(0, 0, 0, 1);
+    cursor: pointer;
+}
 
 /* product of the day component */
 .feature-product {
@@ -60,40 +84,6 @@
 .category__div-products {
     display: inline-block;
 }
-
-
-/* product component */
-.product {
-    text-align: center;
-    padding: 0px 10px;
-    /* max-width: 400px; */
-    /* max-height: 200px; */
-    margin: 0px auto;
-    display: inline-block;
-}
-
-.product__span-title {
-    display: block;
-    padding: 10px 0px;
-    font-size: 1.3rem;
-    font-weight: 400;
-}
-
-.product__img {
-    display: block;
-    margin: 0 auto;
-    padding: 15px 0px;
-    max-width: 200px;
-    max-height: 100px;
-    cursor: pointer;
-    transition: max-width 0.4s, max-height 0.4s;
-}
-
-.product__img:hover {
-    max-width: 210px;
-    max-height: 110px;
-}
-
 
 @media screen and (min-width: 1025px) {
     .category {

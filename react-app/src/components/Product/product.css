@@ -1,0 +1,29 @@
+/* product component */
+.product {
+    text-align: center;
+    padding: 0px 10px;
+    margin: 0px auto;
+    display: inline-block;
+}
+
+.product__span-title {
+    display: block;
+    padding: 10px 0px;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.product__img {
+    display: block;
+    margin: 0 auto;
+    padding: 15px 0px;
+    max-width: 200px;
+    max-height: 100px;
+    cursor: pointer;
+    transition: max-width 0.2s, max-height 0.2s;
+}
+
+.product__img:hover {
+    max-width: 205px;
+    max-height: 105px;
+}

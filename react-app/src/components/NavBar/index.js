@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
@@ -8,73 +8,67 @@ import "./NavBar.css"
 const NavBar = () => {
   const history = useHistory();
   const [search, setSearch] = useState('');
-  const products =  useSelector(state => state.products);
+  const [displaySearchResults, setDisplaySearchResults] = useState(false);
+  const products = useSelector(state => state.products);
   const productsArr = Object.values(products);
 
-  const redirectToHomePage = () => {
-    history.push('/')
+  const onClickSearchBox = () => {
+    setDisplaySearchResults(true);
   }
 
-  console.log('products: ', productsArr)
-  console.log('search: ', search)
+  const onClickResults = (e) => {
+    e.preventDefault();
+    if (!search.length) {
+      history.push("/");
+    }
+    else {
+      history.push("/results");
+    }
+  }
+
+  useEffect(() => {
+    if (!displaySearchResults) return;
+
+    function closeDisplay(e) {
+      if (e.target.parentElement === null) return;
+      if (e.target.parentElement.className === "search-bar--focus") return;
+      setDisplaySearchResults(false);
+    }
+
+    document.addEventListener('click', closeDisplay);
+
+    return () => document.removeEventListener("click", closeDisplay)
+  }, [displaySearchResults])
+
 
   return (
-    <div className="main-container">
-      <nav className="user-navbar">
+    <nav className="navbar">
 
-        <div className="user-navbar__div-search">
-            <input className="search-input" type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
-            <i className="fas fa-search"></i>
-            {search.length > 0 && <div className='search-filter-container'>
-              {productsArr.filter(product => product.title.toLowerCase().includes(search)).map(product => (
-                // <div>{product.title}</div>
-                <NavLink key={product.id} className='search-filter-container__link' to={`products/category/${product.id}`}>{product.title}</NavLink>
-              ))}
-            </div>}
-        </div>
-
-        <img onClick={redirectToHomePage} className="logo_img" src={eShopImg} alt="EShopImage" />
-
-        <div className="user">
-          <div className="user__icons">
-            <i className="far fa-user"></i>
-            <NavLink className="cart_link" to="/cart" exact={true}><i className="fas fa-shopping-cart"></i></NavLink>
-          </div>
-        </div>
-      </nav>
-
-      <div className="categories">
-        <NavLink className="categories__department-link" to="/women" exact={true}>Women</NavLink>
-        <NavLink className="categories__department-link" to="/men">Men</NavLink>
-        <NavLink className="categories__department-link" to="/jewelery">Jewelery</NavLink>
-        <NavLink className="categories__department-link" to="/electronics">Electronics</NavLink>
+      <div onClick={onClickSearchBox} className={!displaySearchResults ? "search-bar" : "search-bar--focus"}>
+        <input className="search-bar__input" type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
+        <i onClick={onClickResults} className="fas fa-search"></i>
+        {(search.length > 0 && displaySearchResults === true) && <div className='search-bar__results-container' >
+          {productsArr.filter(product => product.title.toLowerCase().includes(search)).map(product => (
+            // {"Please Note that in the NavLink, if we remove the first slash '/' in the to attribute. What will happen is, if the
+            // user keeps on clicking a the navlink in the results container, if will keep appending the same url. Thus, making it looks extremly buggy.
+            // Solution: the first slash must be included. Becasue the navlink has to match the same route as specified."}
+            <NavLink key={product.id} className='search-bar__result-link' to={`/products/${product.id}`}>{product.title}</NavLink>
+          ))}
+        </div>}
       </div>
-      {/* <ul>
-        <li>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
-      </ul> */}
-    </div>
+
+      <NavLink to="/">
+        <img className="logo-img" src={eShopImg} alt="EShopImage" />
+      </NavLink>
+
+      <div className="user">
+        <div className="user__icons">
+          <i className="far fa-user"></i>
+          <NavLink className="cart_link" to="/cart" exact={true}><i className="fas fa-shopping-cart"></i></NavLink>
+        </div>
+      </div>
+
+    </nav>
   );
 }
 
