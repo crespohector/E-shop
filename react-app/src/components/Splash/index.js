@@ -27,7 +27,7 @@ const Splash = () => {
     }, [dispatch])
 
     return (
-        <>
+        <div className="body-wrapper">
             <div className="categories">
                 <NavLink className="categories__department-link" to="/categories/women" exact={true}>Women</NavLink>
                 <NavLink className="categories__department-link" to="/categories/men">Men</NavLink>
@@ -39,7 +39,7 @@ const Splash = () => {
                 <span className="feature-product__span">Featured product of the day</span>
                 <Product product={featureItem} />
             </div>
-            
+
             <div className="category" id="style-2">
                 <span className="category__span">Women's Clothing</span>
                 <div className="category__div-products">
@@ -72,7 +72,7 @@ const Splash = () => {
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

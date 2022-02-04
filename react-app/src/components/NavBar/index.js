@@ -1,30 +1,53 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 import eShopImg from "../../images/eShopImg.png"
 import "./NavBar.css"
 
 const NavBar = () => {
+  const history = useHistory();
   const [search, setSearch] = useState('');
-  const [display, setDisplay] = useState(false);
+  const [displaySearchResults, setDisplaySearchResults] = useState(false);
   const products = useSelector(state => state.products);
   const productsArr = Object.values(products);
 
-  console.log('----display: ', display);
-
   const onClickSearchBox = () => {
-    setDisplay(true);
-
+    setDisplaySearchResults(true);
   }
+
+  const onClickResults = (e) => {
+    e.preventDefault();
+    if (!search.length) {
+      history.push("/");
+    }
+    else {
+      history.push("/results");
+    }
+  }
+
+  useEffect(() => {
+    if (!displaySearchResults) return;
+
+    function closeDisplay(e) {
+      if (e.target.parentElement === null) return;
+      if (e.target.parentElement.className === "search-bar--focus") return;
+      setDisplaySearchResults(false);
+    }
+
+    document.addEventListener('click', closeDisplay);
+
+    return () => document.removeEventListener("click", closeDisplay)
+  }, [displaySearchResults])
+
 
   return (
     <nav className="navbar">
 
-      <div className={!display ? "search-bar" : "search-bar--focus"}>
-        <input className="search-bar__input" type="search" value={search} onClick={onClickSearchBox} onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
-        <i className="fas fa-search"></i>
-        {(search.length > 0 && display === true) && <div className='search-bar__results-container' >
+      <div onClick={onClickSearchBox} className={!displaySearchResults ? "search-bar" : "search-bar--focus"}>
+        <input className="search-bar__input" type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
+        <i onClick={onClickResults} className="fas fa-search"></i>
+        {(search.length > 0 && displaySearchResults === true) && <div className='search-bar__results-container' >
           {productsArr.filter(product => product.title.toLowerCase().includes(search)).map(product => (
             // {"Please Note that in the NavLink, if we remove the first slash '/' in the to attribute. What will happen is, if the
             // user keeps on clicking a the navlink in the results container, if will keep appending the same url. Thus, making it looks extremly buggy.

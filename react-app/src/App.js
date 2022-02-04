@@ -52,6 +52,9 @@ function App() {
         <Route path="/products/:productId" exact={true}>
           <h2>Specific product with product id</h2>
         </Route>
+        <Route path="/results" exact={true}>
+          <h1>this is results page</h1>
+        </Route>
       </Switch >
       {/* footer */}
     </BrowserRouter >
