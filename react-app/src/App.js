@@ -17,10 +17,16 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
-      await dispatch(authenticate());
-      setLoaded(true);
-    })();
+    // The cb in authenticate already handles the async tasks. If you are not doing nothing with the
+    //return value then there's maybe no need to set it to be async. 
+    // (async () => {
+    //   await dispatch(authenticate());
+    //   setLoaded(true);
+    // })();
+
+    dispatch(authenticate());
+    setLoaded(true);
+
   }, []);
 
   if (!loaded) {
