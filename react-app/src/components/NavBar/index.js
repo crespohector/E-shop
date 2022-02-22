@@ -59,8 +59,8 @@ const NavBar = () => {
       </NavLink>
 
       <div className="user">
-          <i className="far fa-user"></i>
-          <NavLink className="cart_link" to="/cart" exact={true}><i className="fas fa-shopping-cart"></i></NavLink>
+        <NavLink to={`/profile/users/`}><i className="far fa-user"></i></NavLink>
+        <NavLink className="cart_link" to="/cart" exact={true}><i className="fas fa-shopping-cart"></i></NavLink>
       </div>
 
     </nav>

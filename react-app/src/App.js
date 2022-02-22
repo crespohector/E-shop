@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     // The cb in authenticate already handles the async tasks. If you are not doing nothing with the
-    //return value then there's maybe no need to set it to be async. 
+    //return value then there's maybe no need to set it to be async.
     // (async () => {
     //   await dispatch(authenticate());
     //   setLoaded(true);
@@ -28,7 +28,10 @@ function App() {
     setLoaded(true);
 
   }, []);
-
+  //Because we want to have useEffect paint first, we can force it to wait by using
+  //a state variable and set it to false first. If its false that means it hasn't loaded
+  //the useeffect hook yet. Once, the useEffect hook rerenders, then it will load the content.
+  //However, we may solve this using layout hook?
   if (!loaded) {
     return null;
   }
