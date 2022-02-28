@@ -1,0 +1,43 @@
+.product-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    align-items: center;
+    gap: 10px;
+    margin: 0px auto;
+    padding: 20px 0px;
+}
+
+.product-info__img {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.product-info__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.product-info__category {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.product-info__description {
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: center;
+    width: 50%;
+    line-height: 1.2;
+}
+
+.product-info__price {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.product-info__add-to-cart {
+    background-color: orange;
+    border-radius: 4px;
+    padding: 4px 5px;
+}
