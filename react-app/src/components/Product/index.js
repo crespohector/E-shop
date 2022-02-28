@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./product.css";
 
@@ -8,7 +8,7 @@ const Product = ({ product }) => {
         <div className="product">
             <span className="product__span-title">{product.title}</span>
             <NavLink to={`/products/${product.id}`}>
-                <img className="product__img" src={product.image} alt={product.title} />
+                <img className="product__img" src={product.image} alt={product?.title} />
             </NavLink>
         </div>
     )

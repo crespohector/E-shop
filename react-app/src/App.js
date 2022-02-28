@@ -8,7 +8,9 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Splash from "./components/Splash";
+import Cart from "./components/Cart";
 import { authenticate } from "./store/session";
+import ProductPage from "./components/ProductPage";
 
 
 function App() {
@@ -59,7 +61,10 @@ function App() {
           <h1>Category page</h1>
         </Route>
         <Route path="/products/:productId" exact={true}>
-          <h2>Specific product with product id</h2>
+          <ProductPage/>
+        </Route>
+        <Route path="/cart" exact={true}>
+          < Cart/>
         </Route>
         <Route path="/results" exact={true}>
           <h1>this is results page</h1>
