@@ -14,14 +14,14 @@ const ProductPage = () => {
     const AddtoCart = () => {
         let items = localStorage.getItem('items');
         if (items === null) {
-            localStorage.setItem('items', `${productId},`)
+            localStorage.setItem('items', `${productId}`)
             return ;
         }
         if (items.includes(productId)) {
             setError("This item is already added to cart.")
             return ;
         }
-        items += `${productId}`
+        items += `,${productId}`
         localStorage.setItem('items', items);
     }
 
