@@ -8,7 +8,6 @@ import {itemInCartContext} from "../../index";
 const ShoppingCart = () => {
     const dispatch = useDispatch();
     const [effect, setEffect] = useState(false);
-    console.log('THIS IS EFFECT: ', effect)
     const [total, setTotal] = useState(0);
     const products = useSelector((state) => Object.values(state.products));
     const itemsInLocalStorage = localStorage.getItem('items').split(',');
