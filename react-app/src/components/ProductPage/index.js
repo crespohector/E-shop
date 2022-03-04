@@ -12,24 +12,38 @@ const ProductPage = () => {
     const dispatch = useDispatch();
     const { productId } = useParams();
     const product = useSelector((state) => state.products[productId])
+    console.log('product: ', product)
 
     const AddtoCart = () => {
-        let items = localStorage.getItem('items');
-        if (items === null) {
-            localStorage.setItem('items', `${productId}`)
-            setTotalPrice((totalPrice) => totalPrice + product.price);
-            return ;
-        }
-        if (items.includes(productId)) {
-            setError("This item is already added to cart.")
-            return ;
-        }
-        items += `,${productId}`
-        localStorage.setItem('items', items);
 
-        //add price to the total state variable
-        setTotalPrice((totalPrice) => totalPrice + product.price);
+        const items = localStorage.getItem('items');
+
+        if (items === null) {
+            localStorage.setItem('items', JSON.stringify([product]))
+        }
+        else {
+            const parsedProductsArr = JSON.parse(items)
+            console.log("products: ", parsedProductsArr)
+            let isProductInCart = false;
+            parsedProductsArr.forEach(product => {
+                if (product.id == productId) {
+                    isProductInCart = true;
+                    return ;
+                }
+            })
+            if (isProductInCart) {
+                setError("This item is already added to cart.")
+            }
+            else {
+                parsedProductsArr.push(product)
+                localStorage.setItem('items', JSON.stringify(parsedProductsArr))
+            }
+        }
+
+        // //add price to the total state variable
+        // setTotalPrice((totalPrice) => totalPrice + product.price);
     }
+
 
     useEffect(() => {
         dispatch(fetchOneProduct(productId))
