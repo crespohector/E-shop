@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import CartItem from "./CartItem";
 import { fetchAllProducts } from "../../store/product";
 import { totalPriceContext } from "../../context/TotalPriceContext";
@@ -10,19 +10,7 @@ const ShoppingCart = () => {
     const { totalPrice, setTotalPrice } = useContext(totalPriceContext)
     const dispatch = useDispatch();
     const [effect, setEffect] = useState(false);
-    const products = useSelector((state) => Object.values(state.products));
-    const itemsInLocalStorage = localStorage.getItem('items')?.split(',');
-    const cartItems = [];
-
-    if (itemsInLocalStorage) {
-        for (let item of itemsInLocalStorage) {
-            for (let product of products) {
-                if (item == product.id) {
-                    cartItems.push(product);
-                }
-            }
-        }
-    }
+    const productsInLocalStorage = localStorage.getItem("items");
 
     const checkout = () => {
         localStorage.setItem('items', "")
@@ -37,7 +25,9 @@ const ShoppingCart = () => {
     return (
         <div className="shopping-bag">
             <h1>Shopping Bag</h1>
-            {cartItems.map(item => <CartItem key={item.id} product={item} payload={{ effect, setEffect }} />)}
+            { productsInLocalStorage !== null ? JSON.parse(productsInLocalStorage).map(product => (
+              <CartItem key={product.id} product={product} payload={{effect, setEffect}} />
+            )) : null}
             <div className="total-price-container">
                 <span className="shopping-bag__total">{`Total $${totalPrice}`}</span>
                 <button onClick={checkout} type="button">Checkout</button>
