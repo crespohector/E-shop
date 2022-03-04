@@ -8,7 +8,9 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Splash from "./components/Splash";
+import Cart from "./components/Cart";
 import { authenticate } from "./store/session";
+import ProductPage from "./components/ProductPage";
 
 
 function App() {
@@ -17,12 +19,21 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
-      await dispatch(authenticate());
-      setLoaded(true);
-    })();
-  }, []);
+    // The cb in authenticate already handles the async tasks. If you are not doing nothing with the
+    //return value then there's maybe no need to set it to be async.
+    // (async () => {
+    //   await dispatch(authenticate());
+    //   setLoaded(true);
+    // })();
 
+    dispatch(authenticate());
+    setLoaded(true);
+
+  }, []);
+  //Because we want to have useEffect paint first, we can force it to wait by using
+  //a state variable and set it to false first. If its false that means it hasn't loaded
+  //the useeffect hook yet. Once, the useEffect hook rerenders, then it will load the content.
+  //However, we may solve this using layout hook?
   if (!loaded) {
     return null;
   }
@@ -41,7 +52,7 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path="/users" exact={true} >
-          <UsersList />
+          <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true} >
           <User />
@@ -50,7 +61,10 @@ function App() {
           <h1>Category page</h1>
         </Route>
         <Route path="/products/:productId" exact={true}>
-          <h2>Specific product with product id</h2>
+          <ProductPage/>
+        </Route>
+        <Route path="/cart" exact={true}>
+          < Cart/>
         </Route>
         <Route path="/results" exact={true}>
           <h1>this is results page</h1>

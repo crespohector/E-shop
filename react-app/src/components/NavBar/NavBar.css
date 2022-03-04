@@ -4,6 +4,8 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     background-color: #030e12;
+    padding: 0px 10px;
+    box-sizing: border-box;
 }
 
 .search-bar {
@@ -97,12 +99,12 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    gap: 1.5rem;
 }
 
 .fa-user {
-    margin: 0px 15px 0px 0px;
-    font-size: 1.5rem;
-    cursor:default;
+    font-size: 1.7rem;
+    cursor: pointer;
     color: #ffffff;
     text-decoration: underline 0.15em rgba(0, 0, 0, 0);
     transition: text-decoration-color 300ms, color 300ms;
@@ -113,9 +115,12 @@
     color: rgb(209, 202, 202);
 }
 
+.cart_link {
+
+}
+
 .fa-shopping-cart {
-    margin: 0px 10px 0px 0px;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     cursor: pointer;
     color: #ffffff;
     text-decoration: underline 0.15em rgba(0, 0, 0, 0);
