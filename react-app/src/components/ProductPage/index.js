@@ -12,18 +12,16 @@ const ProductPage = () => {
     const dispatch = useDispatch();
     const { productId } = useParams();
     const product = useSelector((state) => state.products[productId])
-    console.log('product: ', product)
 
     const AddtoCart = () => {
-
         const items = localStorage.getItem('items');
 
         if (items === null) {
             localStorage.setItem('items', JSON.stringify([product]))
+            setTotalPrice((totalPrice) => totalPrice + product.price)
         }
         else {
             const parsedProductsArr = JSON.parse(items)
-            console.log("products: ", parsedProductsArr)
             let isProductInCart = false;
             parsedProductsArr.forEach(product => {
                 if (product.id == productId) {
@@ -37,11 +35,9 @@ const ProductPage = () => {
             else {
                 parsedProductsArr.push(product)
                 localStorage.setItem('items', JSON.stringify(parsedProductsArr))
+                setTotalPrice((totalPrice) => totalPrice + product.price)
             }
         }
-
-        // //add price to the total state variable
-        // setTotalPrice((totalPrice) => totalPrice + product.price);
     }
 
 
