@@ -13,7 +13,7 @@ const ShoppingCart = () => {
     const productsInLocalStorage = localStorage.getItem("items");
 
     const checkout = () => {
-        localStorage.setItem('items', "")
+        localStorage.removeItem("items");
         window.location.reload()
     }
 

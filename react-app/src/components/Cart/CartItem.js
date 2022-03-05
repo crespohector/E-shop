@@ -8,14 +8,21 @@ const CartItem = ({product, payload}) => {
     const [amount, setAmount] = useState(1);
 
     //remove item in shopping cart
-    const removeItem = (productId) => () => {
-        let itemsArr = localStorage.getItem('items').split(',');
+    const removeItem = () => {
+
+        const itemsArr = JSON.parse(localStorage.getItem('items'));
+        let itemIdx;
+
         itemsArr.forEach((item, idx) => {
-            if (item == productId) {
-                itemsArr.splice(idx, 1)
+            if (item.id == product.id) {
+                itemIdx = idx;
+                return ;
             }
         })
-        localStorage.setItem('items', itemsArr.join(','))
+
+        itemsArr.splice(itemIdx, 1);
+
+        localStorage.setItem('items', JSON.stringify(itemsArr));
 
         setTotalPrice((totalPrice) => totalPrice - product.price);
 
@@ -24,6 +31,7 @@ const CartItem = ({product, payload}) => {
 
     //Decrease amount
     const decreaseAmt = () => {
+        //if its 0 then do nothing that's why we have the delete button there
         if (amount <= 1) {
             let itemsArr = localStorage.getItem('items').split(',');
             itemsArr.forEach((item, idx) => {
@@ -52,7 +60,7 @@ const CartItem = ({product, payload}) => {
 
     return (
         <div className="cart-item">
-            <button onClick={removeItem(product.id)} className="cart-item__button" type="button">Delete</button>
+            <button onClick={removeItem} className="cart-item__button" type="button">Delete</button>
             <img className="cart-item__img" src={product.image} alt="product image"/>
             <span className="cart-item__span">{product.title}</span>
             <div>
