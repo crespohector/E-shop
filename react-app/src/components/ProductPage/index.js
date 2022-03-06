@@ -1,13 +1,11 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchOneProduct } from "../../store/product";
-import {totalPriceContext} from "../../context/TotalPriceContext";
 
 import "./ProductPage.css";
 
 const ProductPage = () => {
-    const {totalPrice, setTotalPrice} = useContext(totalPriceContext);
     const [error, setError] = useState("");
     const dispatch = useDispatch();
     const { productId } = useParams();
@@ -18,7 +16,6 @@ const ProductPage = () => {
 
         if (items === null) {
             localStorage.setItem('items', JSON.stringify([product]))
-            setTotalPrice((totalPrice) => totalPrice + product.price)
         }
         else {
             const parsedProductsArr = JSON.parse(items)
@@ -35,7 +32,6 @@ const ProductPage = () => {
             else {
                 parsedProductsArr.push(product)
                 localStorage.setItem('items', JSON.stringify(parsedProductsArr))
-                setTotalPrice((totalPrice) => totalPrice + product.price)
             }
         }
     }
