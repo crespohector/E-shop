@@ -23,9 +23,6 @@ const CartItem = ({ product, payload }) => {
 
         localStorage.setItem('items', JSON.stringify(itemsArr));
 
-        //todo- refactor if removed item price is quanity * price subtract from total
-        setTotalPrice((totalPrice) => totalPrice - product.price);
-
         //This is how useEffect functionality works. In the dependency array, if any of the state
         //variable's value changes state then it will CAUSE a re-render. Essentially, running the
         //page again and whatever is in the cb of the useEffect hook.
@@ -48,7 +45,7 @@ const CartItem = ({ product, payload }) => {
                 }
             })
             localStorage.setItem('items', JSON.stringify(itemsArr));
-            // setTotalPrice((totalPrice) => totalPrice - product.price);
+            setTotalPrice((totalPrice) => totalPrice - product.price);
         }
     }
 
@@ -63,7 +60,7 @@ const CartItem = ({ product, payload }) => {
                 }
             })
             localStorage.setItem('items', JSON.stringify(itemsArr));
-            // setTotalPrice((totalPrice) => totalPrice + product.price);
+            setTotalPrice((totalPrice) => totalPrice + product.price);
         }
     }
 

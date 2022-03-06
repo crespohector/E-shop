@@ -1,31 +1,28 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useDispatch } from "react-redux";
 import CartItem from "./CartItem";
-import { fetchAllProducts } from "../../store/product";
 import { totalPriceContext } from "../../context/TotalPriceContext";
 
 import "./Cart.css";
 
 const ShoppingCart = () => {
     const { totalPrice, setTotalPrice } = useContext(totalPriceContext)
-    const dispatch = useDispatch();
     const [effect, setEffect] = useState(false);
     const productsInLocalStorage = localStorage.getItem("items");
-    //todo- setting total price to stay the same amount even after refreshing
+
+    //Todo- setting total price to stay the same amount even after refreshing
 
     const checkout = () => {
         localStorage.removeItem("items");
+        setTotalPrice(0);
         setEffect(true);
     }
 
     useEffect(() => {
-        dispatch(fetchAllProducts());
         //better performance to set total before loading the DOM
         if (productsInLocalStorage !== null) {
             let total = JSON.parse(productsInLocalStorage).reduce((prev, curr) => {
                 return prev + curr.price;
             }, 0)
-            console.log('total: ', total);
             setTotalPrice(total);
         }
         setEffect(false);
